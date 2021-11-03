@@ -5,7 +5,7 @@ const filesPath = path.resolve(__dirname, 'files');
 const filesCopyPath = path.join(__dirname, 'files-copy');
 
 const copyDir = async (src, dest) => {
-  await fs.rmdir(dest, { recursive: true });
+  await fs.rm(dest, { recursive: true, force: true });
   await fs.mkdir(dest, { recursive: true });
   
   const entries = await fs.readdir(src, { withFileTypes: true });
