@@ -41,7 +41,7 @@ const mergeStyles = async (src, dest, bundleFileName) => {
 };
 
 const copyDir = async (src, dest) => {
-  await fs.rmdir(dest, { recursive: true });
+  await fs.rm(dest, { recursive: true, force: true });  
   await fs.mkdir(dest, { recursive: true });
   
   const entries = await fs.readdir(src, { withFileTypes: true });
@@ -74,7 +74,7 @@ const replaceTagsWithComponents = async (htmlFile) => {
 };
 
 const buildPage = async () => {
-  await fs.rmdir(distPath, { recursive: true });
+  await fs.rm(distPath, { recursive: true, force: true });  
   await fs.mkdir(distPath, { recursive: true });
 
   const templateContent = await readFile(templatePath);
