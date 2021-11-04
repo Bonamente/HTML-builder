@@ -5,15 +5,10 @@ const stdin = process.stdin;
 const stdout = process.stdout;
 
 const filePath = path.join(__dirname, 'text.txt');
-
-let output;
+const output = fs.createWriteStream(filePath);
 
 stdout.write('Введите, пожалуйста, текст:\n');
 stdin.on('data', (data) => {
-  if (!output) {
-    output = fs.createWriteStream(filePath);
-  }
-
   const text = data.toString();
 
   if (text.trim() === 'exit') {
